@@ -7,7 +7,43 @@
     <title>Image Processing Api</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/upload">API Documentation</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <h1>Image Processing Api</h1>
+
+        <p>
+            <input type="file" name="image" />
+            <input type="submit" value="Upload" />
+        </p>
+        <p>
+            <label for="width">Desired Width:</label>
+            <input type="text" name="width" />
+        </p>
+        <p>
+            <label for="width">Desired Height:</label>
+            <input type="text" name="height"/>
+        </p>
+       
+
+        <div style="display:flex">
+            <div>
+                <h2>original</h2>
+                <img src="localhost/img.png" alt="" width="100px" height="100px" style="border:1px solid red;">
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div>
+                <h2>preview</h2>
+                <img src="localhost/img.png" alt="" width="100px" height="100px" style="border:1px solid red;">
+            </div>
+        </div>
+
 
 </body>
 
