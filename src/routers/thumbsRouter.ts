@@ -1,6 +1,8 @@
 import express from 'express'
 const router = express.Router()
 
-console.log(router)
+router.get('/thumbs', (req, res) => {
+    res.send('thumbs router')
+})
 
 export default router
