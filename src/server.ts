@@ -3,6 +3,7 @@ import express, { Application, Request, Response } from 'express'
 import helmet from 'helmet'
 import thumbsRouter from './routers/thumbsRouter'
 import logger from './utils/logger'
+import path from 'path'
 const app: Application = express()
 
 const env = load({
@@ -13,10 +14,16 @@ const env = load({
 })
 
 const { PORT, ENVIRONMENT, API_NAME, BASE_URL } = env
+
 app.use(helmet())
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.set('view engine', 'ejs')
+
+app.set('views', 'src/views')
 app.use(express.json())
 app.get('/', logger, (req: Request, res: Response) => {
-    res.send('api running')
+    res.render('index')
 })
 
 app.use('/thumbs', logger, thumbsRouter)
