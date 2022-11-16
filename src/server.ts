@@ -1,5 +1,6 @@
 import { load } from 'ts-dotenv'
 import express, { Application, Request, Response } from 'express'
+import thumbsRouter from './routers/thumbsRouter'
 const app: Application = express()
 
 const env = load({
@@ -15,12 +16,8 @@ app.get('/', (req: Request, res: Response) => {
     res.send('api running')
 })
 
+app.use('/thumbs', thumbsRouter)
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
 })
-
-const myFunc = (num: number): number => {
-    return num * num
-}
-
-export default myFunc
