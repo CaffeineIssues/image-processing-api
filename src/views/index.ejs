@@ -3,48 +3,152 @@
 
 <head>
     <meta charset="utf-8" />
-    <script  type="text/javascript" src="/index.js" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <title>Image Processing Api</title>
+    <style>
+        .navbar-nav {
+            margin-left: auto;
+        }
+        body{
+            background-color:#f0f0f0;
+        }
+        .container-fluid h1{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .avatar{
+            border-radius:50%;
+        }
+        .drop-area {
+            width: 45em;
+            padding: 15px;
+            border: 1px solid #333;
+            background: rgba(0,0,0,0.7);
+        }
+        #dropArea {
+            border: 2px dashed #bbb;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 50px;
+            text-align: center;
+            font: 21pt bold arial;
+            color: #bbb;
+        }
+       
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/upload">API Documentation</a></li>
-
-            </ul>
-        </nav>
-    </header>
-    <h1>Image Processing Api</h1>
-
-        <p>
-            <input type="file" name="image" />
-            <input type="submit" value="Upload" />
-        </p>
-        <p>
-            <label for="width">Desired Width:</label>
-            <input type="text" name="width" />
-        </p>
-        <p>
-            <label for="width">Desired Height:</label>
-            <input type="text" name="height"/>
-        </p>
-       
-
-        <div style="display:flex">
-            <div>
-                <h2>original</h2>
-                <img src="localhost/img.png" alt="" width="100px" height="100px" style="border:1px solid red;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/images/avatar.png" width="30" height="30" class="d-inline-block align-top avatar" alt="">
+                @CaffeineIssues
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Documentation</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                  </li>
+                </ul>
             </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div>
-                <h2>preview</h2>
-                <img src="localhost/img.png" alt="" width="100px" height="100px" style="border:1px solid red;">
+          </nav>
+    </header>
+    <div class="container-fluid">
+        <h1>Image Processing Api</h1>
+        
+        <center>
+            <p>If you just want to use this tool to process an image you can drag it and drop in the area bellow.</p>
+            <p>Otherwise, if you want to use this tool as an api, read the <a>documentation</a></p>
+        
+            <div class="drop-area">
+                <div id="dropArea">Drop your image here</div>
+            </div>
+        </center>
+        <H1>Tools</H1>
+        <center>
+        <div class="row justify-content-center">
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Convert the image</h5>
+                  <p class="card-text">Converts the image to the desired format.</p>
+                  <a href="#" class="btn btn-primary">Use this tool</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resize the image</h5>
+                  <p class="card-text">Resizes the image to the desired dimensions.</p>
+                  <a href="#" class="btn btn-primary">Use this tool</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Generate a thumbnail</h5>
+                    <p class="card-text">Generates a thumbnail of your image.</p>
+                    <a href="#" class="btn btn-primary">Use this tool</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <div class="row justify-content-center" style="margin-top:5%;">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Original Image
+                    </div>
+                    <div class="card-body">
+                        <img id="originalImage" src="" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Processed Image
+                    </div>
+                    <div class="card-body">
+                        <img id="processedImage" src="" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
+    <footer class="fixed-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <p><img src="/assets/images/coffee-cup.png" width="2%" height="2%">Wanna buy me a coffe? Support my <a href="">Patreon</a> </p>
+                    </center>
+                </div>
             </div>
         </div>
-
+    
+    </footer>
+        
 
 </body>
+<script>
+  
+</script>
 
 </html>

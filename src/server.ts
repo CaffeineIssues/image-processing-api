@@ -15,7 +15,22 @@ const env = load({
 
 const { PORT, ENVIRONMENT, API_NAME, BASE_URL } = env
 
-app.use(helmet())
+app.use(
+    helmet({
+        contentSecurityPolicy: {
+            useDefaults: true,
+            directives: {
+                'script-src': [
+                    "'self'",
+                    "'unsafe-inline'",
+                    'https://cdn.jsdelivr.net/',
+                    'https://code.jquery.com/',
+                ],
+            },
+        },
+    })
+)
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.set('view engine', 'ejs')
