@@ -6,14 +6,12 @@ import logger from './utils/logger'
 import path from 'path'
 const app: Application = express()
 
-const env = load({
+const { PORT, ENVIRONMENT, API_NAME, BASE_URL } = load({
     PORT: Number,
     ENVIRONMENT: ['production' as const, 'development' as const],
     API_NAME: String,
     BASE_URL: String,
 })
-
-const { PORT, ENVIRONMENT, API_NAME, BASE_URL } = env
 
 app.use(
     helmet({
@@ -44,5 +42,7 @@ app.get('/', logger, (req: Request, res: Response) => {
 app.use('/thumbs', logger, thumbsRouter)
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+    console.log(
+        `Server running ${API_NAME} as ${ENVIRONMENT} on port ${PORT} you can access it at ${BASE_URL}`
+    )
 })
