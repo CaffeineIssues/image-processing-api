@@ -11,7 +11,7 @@ const { PORT, ENVIRONMENT, API_NAME, BASE_URL, OWNER_PATH } = load({
     ENVIRONMENT: ['production' as const, 'development' as const],
     API_NAME: String,
     BASE_URL: String,
-    OWNER_PATH: String
+    OWNER_PATH: String,
 })
 
 app.use(
@@ -39,7 +39,6 @@ app.use(express.json())
 app.get('/', logger, (req: Request, res: Response) => {
     res.render('index')
 })
-
 
 app.use('/upload', logger, uploadRouter)
 

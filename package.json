@@ -1,55 +1,55 @@
 {
-  "name": "image-processing-api",
-  "version": "1.0.0",
-  "description": "node image-processing-ai",
-  "main": "server.js",
-  "scripts": {
-    "start_build": "node dist/server.js",
-    "start_dev": "nodemon --watch './**/*.ts' --exec \"ts-node\" src/server.ts",
-    "build": "npx tsc",
-    "jasmine": "jasmine",
-    "test": "npm run build && npm run jasmine"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CaffeineIssues/image-processing-api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CaffeineIssues/image-processing-api/issues"
-  },
-  "homepage": "https://github.com/CaffeineIssues/image-processing-api#readme",
-  "devDependencies": {
-    "@types/ejs": "^3.1.1",
-    "@types/eslint": "^8.4.10",
-    "@types/express": "^4.17.14",
-    "@types/helmet": "^4.0.0",
-    "@types/jasmine": "^4.3.0",
-    "@types/mime-types": "^2.1.1",
-    "@types/multer": "^1.4.7",
-    "@types/node": "^18.11.9",
-    "@types/nodemon": "^1.19.2",
-    "@types/sharp": "^0.31.0",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
-    "eslint": "^8.27.0",
-    "eslint-config-prettier": "^8.5.0",
-    "nodemon": "^2.0.20",
-    "prettier": "2.7.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
-  },
-  "dependencies": {
-    "ejs": "^3.1.8",
-    "express": "^4.18.2",
-    "helmet": "^6.0.0",
-    "jasmine": "^4.5.0",
-    "jasmine-spec-reporter": "^7.0.0",
-    "mime-types": "^2.1.35",
-    "multer": "^1.4.5-lts.1",
-    "sharp": "^0.31.2",
-    "ts-dotenv": "^0.9.0"
-  }
+    "name": "image-processing-api",
+    "version": "1.0.0",
+    "description": "node image-processing-ai",
+    "main": "server.js",
+    "scripts": {
+        "start_build": "node dist/server.js",
+        "start_dev": "nodemon --watch src --exec \"ts-node\" src/server.ts",
+        "build": "npx tsc",
+        "jasmine": "jasmine",
+        "test": "npm run build && npm run jasmine"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CaffeineIssues/image-processing-api.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/CaffeineIssues/image-processing-api/issues"
+    },
+    "homepage": "https://github.com/CaffeineIssues/image-processing-api#readme",
+    "devDependencies": {
+        "@types/ejs": "^3.1.1",
+        "@types/eslint": "^8.4.10",
+        "@types/express": "^4.17.14",
+        "@types/helmet": "^4.0.0",
+        "@types/jasmine": "^4.3.0",
+        "@types/mime-types": "^2.1.1",
+        "@types/multer": "^1.4.7",
+        "@types/node": "^18.11.9",
+        "@types/nodemon": "^1.19.2",
+        "@types/sharp": "^0.31.0",
+        "@typescript-eslint/eslint-plugin": "^5.43.0",
+        "@typescript-eslint/parser": "^5.43.0",
+        "eslint": "^8.27.0",
+        "eslint-config-prettier": "^8.5.0",
+        "nodemon": "^2.0.20",
+        "prettier": "2.7.1",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.5"
+    },
+    "dependencies": {
+        "ejs": "^3.1.8",
+        "express": "^4.18.2",
+        "helmet": "^6.0.0",
+        "jasmine": "^4.5.0",
+        "jasmine-spec-reporter": "^7.0.0",
+        "mime-types": "^2.1.35",
+        "multer": "^1.4.5-lts.1",
+        "sharp": "^0.31.2",
+        "ts-dotenv": "^0.9.0"
+    }
 }

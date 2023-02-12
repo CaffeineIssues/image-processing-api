@@ -9,9 +9,13 @@ router.post('/image', async (req: Request, res: Response) => {
         const { owner }: FileImage = req.body
         const ownerExists = await checkOwner(owner).then((exists: boolean) => {
             if (exists) {
-                res.status(200).json({ message: 'Owner already exists no folder created' })
-            }else{
-                res.status(200).json({ message: 'Owner didnt exist, folder created' })
+                res.status(200).json({
+                    message: 'Owner already exists no folder created',
+                })
+            } else {
+                res.status(200).json({
+                    message: 'Owner didnt exist, folder created',
+                })
             }
         })
     } catch (error: unknown) {
