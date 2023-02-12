@@ -11,11 +11,10 @@ export const checkOwner = async (owner: string): Promise<boolean> => {
         const response = await fs.promises.mkdir(`${OWNER_PATH}/${owner}`, {
             recursive: true,
         })
-        if (response) {
-            return true
-        } else {
+        if (!response) {
             return false
         }
+        return true
     } catch (error: unknown) {
         console.log(error)
         throw new Error()
@@ -26,24 +25,28 @@ export const saveFile = async (
     owner: string,
     file: imageObject
 ): Promise<boolean> => {
-    try {
-        console.log(file)
-        const response = await fs.promises
-            .writeFile(
-                `${OWNER_PATH}/${owner}/${file.originalname}`,
-                file.buffer as Buffer
-            )
-            .then(() => {
-                const result = fs.readFileSync(
-                    `${OWNER_PATH}/${owner}/${file.originalname}`
-                )
-                if (result) {
-                    return true
-                } else {
-                    return false
-                }
-            })
+    const { fieldname, originalname, encoding, mimetype, buffer, size } = file
 
+    try {
+        const extension = mimetype.split('/')[1]
+        const imageFolder = originalname.split(`.${extension}`)[0]
+        const response = await fs.promises
+            .mkdir(`${OWNER_PATH}/${owner}/${imageFolder}`, {
+                recursive: true,
+            })
+            .then(async (result) => {
+                const fileExists = fs.existsSync(
+                    `${OWNER_PATH}/${owner}/${imageFolder}/${file.originalname}`
+                )
+                if (!fileExists) {
+                    fs.writeFileSync(
+                        `${OWNER_PATH}/${owner}/${imageFolder}/${file.originalname}`,
+                        file.buffer as Buffer
+                    )
+                    return true
+                }
+                return false
+            })
         return response
     } catch (error: unknown) {
         console.log(error)
