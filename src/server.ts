@@ -1,7 +1,7 @@
 import { load } from 'ts-dotenv'
 import express, { Application, Request, Response } from 'express'
 import helmet from 'helmet'
-import thumbsRouter from './routers/thumbsRouter'
+import uploadRouter from './routers/uploadRouter'
 import logger from './utils/logger'
 import path from 'path'
 const app: Application = express()
@@ -39,7 +39,8 @@ app.get('/', logger, (req: Request, res: Response) => {
     res.render('index')
 })
 
-app.use('/thumbs', logger, thumbsRouter)
+
+app.use('/upload', logger, uploadRouter)
 
 app.listen(PORT, () => {
     console.log(

@@ -1,8 +1,8 @@
 export interface FileImage {
     owner: string
-    image: unknown
-    width: number
-    height: number
+    image?: unknown
+    width?: number
+    height?: number
 }
 
 export interface BufferImage {
