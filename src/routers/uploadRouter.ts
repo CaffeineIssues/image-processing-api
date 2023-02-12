@@ -19,7 +19,7 @@ router.post('/image', async (req: Request, res: Response) => {
                     const saved = await saveFile(owner, image[0])
 
                     if (!saved) {
-                        return res.status(500).json({
+                        return res.status(210).json({
                             message: {
                                 folder: 'Owner already existed no need to create it',
                                 file: 'file already existed no need to resave it',
@@ -35,7 +35,7 @@ router.post('/image', async (req: Request, res: Response) => {
                 }
                 const saved = await saveFile(owner, image[0])
                 if (!saved) {
-                    return res.status(500).json({
+                    return res.status(210).json({
                         message: {
                             folder: `a folder was created for owner ${owner}`,
                             file: 'file already existed no need to save',

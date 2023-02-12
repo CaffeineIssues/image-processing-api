@@ -10,7 +10,15 @@ const handleUpload = (event) => {
     fetch('/upload/image',{
         method: 'POST',
         body:formData
+    }).then((response)=>{
+        if(response.status === 200){
+            alert('Image Uploaded Successfully');
+        }if(response.status === 210){
+            alert('Image Already Exist');
 
+        }if(response.status === 500){
+            alert('Internal Server Error');
+        }
     })
 }
 
