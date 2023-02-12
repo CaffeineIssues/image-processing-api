@@ -6,11 +6,12 @@ import logger from './utils/logger'
 import path from 'path'
 const app: Application = express()
 
-const { PORT, ENVIRONMENT, API_NAME, BASE_URL } = load({
+const { PORT, ENVIRONMENT, API_NAME, BASE_URL, OWNER_PATH } = load({
     PORT: Number,
     ENVIRONMENT: ['production' as const, 'development' as const],
     API_NAME: String,
     BASE_URL: String,
+    OWNER_PATH: String
 })
 
 app.use(
