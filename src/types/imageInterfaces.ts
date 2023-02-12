@@ -1,20 +1,14 @@
+export interface imageObject {
+    fieldname?: string
+    originalname?: string
+    encoding?: string
+    mimetype?: string
+    buffer?: Buffer
+    size?: number
+}
 export interface FileImage {
     owner: string
     image?: unknown
     width?: number
     height?: number
-}
-
-export interface BufferImage {
-    owner: string
-    image: Buffer
-    width: number
-    height: number
-}
-
-export interface StringImage {
-    owner: string
-    image: string
-    width: number
-    height: number
 }

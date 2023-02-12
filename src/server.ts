@@ -1,9 +1,13 @@
 import { load } from 'ts-dotenv'
 import express, { Application, Request, Response } from 'express'
+
 import helmet from 'helmet'
 import uploadRouter from './routers/uploadRouter'
 import logger from './utils/logger'
 import path from 'path'
+import bodyParser from 'body-parser'
+import multer from 'multer'
+const upload = multer()
 const app: Application = express()
 
 const { PORT, ENVIRONMENT, API_NAME, BASE_URL, OWNER_PATH } = load({
@@ -30,6 +34,18 @@ app.use(
     })
 )
 
+app.use(
+    bodyParser.json({
+        limit: '50mb',
+    })
+)
+app.use(
+    bodyParser.urlencoded({
+        limit: '50mb',
+        extended: true,
+    })
+)
+app.use(upload.any())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.set('view engine', 'ejs')
