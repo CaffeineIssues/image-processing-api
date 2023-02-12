@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <title>Image Processing Api</title>
+   
+    <script src="/helper.js" charset="utf-8" defer></script>
     <style>
         .navbar-nav {
             margin-left: auto;
@@ -74,10 +76,16 @@
         <center>
             <p>If you just want to use this tool to process an image you can drag it and drop in the area bellow.</p>
             <p>Otherwise, if you want to use this tool as an api, read the <a>documentation</a></p>
-        
-            <div class="drop-area">
-                <div id="dropArea"><h2>Drop your image here</h2></div>
-            </div>
+            <form action="/upload/image" method="POST">            
+                <div class="drop-area">
+                    <div id="dropArea">
+                          <h2>Drop your image here</h2>
+                          <input type="file" id="image" name="image" onChange="handleUpload();"/>
+                          <input type="hidden" value="<%= ownerId %>" id="owner" name="owner">
+                    </div>
+                    
+                </div>
+            </form>
         </center>
         <H1>Tools</H1>
         <center>

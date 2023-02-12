@@ -8,6 +8,7 @@ import path from 'path'
 import bodyParser from 'body-parser'
 import multer from 'multer'
 const upload = multer()
+import { v4 as uuidv4 } from 'uuid'
 const app: Application = express()
 
 const { PORT, ENVIRONMENT, API_NAME, BASE_URL, OWNER_PATH } = load({
@@ -28,7 +29,9 @@ app.use(
                     "'unsafe-inline'",
                     'https://cdn.jsdelivr.net/',
                     'https://code.jquery.com/',
+                    'http://localhost:3000/',
                 ],
+                'script-src-attr': ["'self'", "'unsafe-inline'"],
             },
         },
     })
@@ -53,7 +56,7 @@ app.set('view engine', 'ejs')
 app.set('views', 'src/views')
 app.use(express.json())
 app.get('/', logger, (req: Request, res: Response) => {
-    res.render('index')
+    res.render('index', { ownerId: uuidv4() })
 })
 
 app.use('/upload', logger, uploadRouter)

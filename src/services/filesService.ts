@@ -40,7 +40,7 @@ export const saveFile = async (
                 )
                 if (!fileExists) {
                     fs.writeFileSync(
-                        `${OWNER_PATH}/${owner}/${imageFolder}/${file.originalname}`,
+                        `${OWNER_PATH}/${owner}/${imageFolder}/original.${extension}`,
                         file.buffer as Buffer
                     )
                     return true
