@@ -8,6 +8,9 @@ const { OWNER_PATH } = load({
 
 export const checkOwner = async (owner: string): Promise<boolean> => {
     try {
+        if (owner === '') {
+            throw new Error('Owner is empty')
+        }
         const response = await fs.promises.mkdir(`${OWNER_PATH}/${owner}`, {
             recursive: true,
         })
@@ -16,8 +19,11 @@ export const checkOwner = async (owner: string): Promise<boolean> => {
         }
         return true
     } catch (error: unknown) {
-        console.log(error)
-        throw new Error()
+        throw new Error(
+            error instanceof Error
+                ? `${(error as Error).message}`
+                : `An unknown error occurred`
+        )
     }
 }
 
@@ -49,7 +55,10 @@ export const saveFile = async (
             })
         return response
     } catch (error: unknown) {
-        console.log(error)
-        throw new Error()
+        throw new Error(
+            error instanceof Error
+                ? `${(error as Error).message}`
+                : `An unknown error occurred`
+        )
     }
 }
