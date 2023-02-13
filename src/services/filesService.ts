@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { load } from 'ts-dotenv'
-import { FileImage, imageObject } from '../types/imageInterfaces'
+import { imageObject } from '../types/imageInterfaces'
 
 const { OWNER_PATH } = load({
     OWNER_PATH: String,
@@ -29,18 +29,16 @@ export const checkOwner = async (owner: string): Promise<boolean> => {
 
 export const saveFile = async (
     owner: string,
-    file: imageObject
+    file: imageObject,
+    extension: string,
+    imageFolder: string
 ): Promise<boolean> => {
-    const { fieldname, originalname, encoding, mimetype, buffer, size } = file
-
     try {
-        const extension = mimetype.split('/')[1]
-        const imageFolder = originalname.split(`.${extension}`)[0]
         const response = await fs.promises
             .mkdir(`${OWNER_PATH}/${owner}/${imageFolder}`, {
                 recursive: true,
             })
-            .then(async (result) => {
+            .then(async () => {
                 const fileExists = fs.existsSync(
                     `${OWNER_PATH}/${owner}/${imageFolder}/${file.originalname}`
                 )
