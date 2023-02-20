@@ -14,7 +14,12 @@ router.post('/image', async (req: Request, res: Response) => {
         const { owner }: FileImage = req.body
         const image: imageObject[] = req.files as imageObject[]
         const extension = image[0].mimetype.split('/')[1]
-        const imageFolder = image[0].originalname.split('.' + extension)[0]
+        console.log(image[0].mimetype)
+        console.log(image[0].originalname)
+        const imageFolder = image[0].originalname.split(
+            `.${extension === 'jpeg' ? 'jpg' : extension}`
+        )[0]
+        console.log(imageFolder)
         await checkOwner(owner).then(async (exists: boolean) => {
             if (!exists) {
                 const saved = await saveFile(

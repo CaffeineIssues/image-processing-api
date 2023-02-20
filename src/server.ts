@@ -2,7 +2,6 @@ import { load } from 'ts-dotenv'
 import express, { Application, Request, Response } from 'express'
 
 import helmet from 'helmet'
-import uploadRouter from './routers/uploadRouter'
 import logger from './utils/logger'
 import path from 'path'
 import bodyParser from 'body-parser'
@@ -10,6 +9,9 @@ import multer from 'multer'
 const upload = multer()
 import { v4 as uuidv4 } from 'uuid'
 const app: Application = express()
+
+import uploadRouter from './routers/uploadRouter'
+import thumbsRouter from './routers/thumbsRouter'
 
 const { PORT, ENVIRONMENT, API_NAME, BASE_URL, OWNER_PATH } = load({
     PORT: Number,
@@ -60,6 +62,7 @@ app.get('/', logger, (req: Request, res: Response) => {
 })
 
 app.use('/upload', logger, uploadRouter)
+app.use('/thumbs', logger, thumbsRouter)
 
 app.listen(PORT, () => {
     console.log(
