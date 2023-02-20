@@ -1,8 +1,5 @@
-import fs from 'fs'
 import sharp from 'sharp'
 import { load } from 'ts-dotenv'
-import { imageObject } from '../types/imageInterfaces'
-import path from 'path'
 
 const { OWNER_PATH } = load({
     OWNER_PATH: String,
@@ -11,12 +8,10 @@ const { OWNER_PATH } = load({
 export const generateThumbs = async (
     owner: string,
     imageFolder: string,
-    imageName: string
+    imageName: string,
+    extension: string
 ): Promise<boolean> => {
     try {
-        const extension = path.extname(
-            `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`
-        )
         console.log(extension)
         return sharp(
             `${OWNER_PATH}/${owner}/${imageFolder}/original${extension}`
@@ -28,6 +23,7 @@ export const generateThumbs = async (
                 return true
             })
             .catch((error) => {
+                console.log(error)
                 return false
             })
     } catch (error: unknown) {
