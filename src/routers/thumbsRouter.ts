@@ -18,8 +18,19 @@ router.get(
                 `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`
             )
             const fileExists = fs.existsSync(
-                `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`
+                `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`.replace(
+                    'original',
+                    'thumb'
+                )
             )
+            if (!extension) {
+                return res.status(500).json({
+                    message: {
+                        message:
+                            'failed to generate Thumb, orignal image not foundq',
+                    },
+                })
+            }
             if (!fileExists) {
                 await generateThumbs(
                     owner,
@@ -34,7 +45,8 @@ router.get(
                     ) {
                         return res.status(500).json({
                             message: {
-                                message: 'failed to generate Thumb',
+                                message:
+                                    'failed to generate Thumb, orignal image not found',
                             },
                         })
                     }
@@ -45,13 +57,14 @@ router.get(
                         },
                     })
                 })
+            } else {
+                return res.status(200).json({
+                    message: {
+                        file: 'thumb already existed for this image',
+                        url: `http://localhost:3000/owners/${owner}/${imageFolder}/thumb${extension}`,
+                    },
+                })
             }
-            return res.status(200).json({
-                message: {
-                    file: 'thumb already existed for this image',
-                    url: `http://localhost:3000/owners/${owner}/${imageFolder}/thumb${extension}`,
-                },
-            })
         } catch (error: unknown) {
             throw new Error(
                 error instanceof Error
