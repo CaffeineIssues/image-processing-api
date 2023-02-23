@@ -61,13 +61,13 @@ app.use(express.json())
 app.get('/', logger, (req: Request, res: Response) => {
     res.render('index')
 })
-app.get('/home', logger, (req: Request, res: Response) => {
+app.post('/home', logger, (req: Request, res: Response) => {
     res.render('pages/home', { ownerId: uuidv4() })
 })
-app.get('/documentation', logger, (req: Request, res: Response) => {
+app.post('/documentation', logger, (req: Request, res: Response) => {
     res.render('pages/documentation')
 })
-app.get('/about', logger, (req: Request, res: Response) => {
+app.post('/about', logger, (req: Request, res: Response) => {
     res.render('pages/about')
 })
 
