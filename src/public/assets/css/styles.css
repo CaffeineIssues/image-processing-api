@@ -1,0 +1,30 @@
+.navbar-nav {
+    margin-left: auto;
+}
+body{
+    background-color:#f0f0f0;
+  
+}
+.container-fluid h1{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.avatar{
+    border-radius:50%;
+}
+.drop-area {
+    width: 45em;
+    padding: 15px;
+    border: 1px solid #333;
+    background: #212529;
+}
+#dropArea {
+    border: 2px dashed #bbb;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+    font-weight: bold;
+    color: #bbb;
+}

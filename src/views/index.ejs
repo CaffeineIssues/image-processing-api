@@ -4,162 +4,55 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
     <title>Image Processing Api</title>
-   
-    <script src="/helper.js" charset="utf-8" defer></script>
-    <style>
-        .navbar-nav {
-            margin-left: auto;
-        }
-        body{
-            background-color:#f0f0f0;
-          
-        }
-        .container-fluid h1{
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .avatar{
-            border-radius:50%;
-        }
-        .drop-area {
-            width: 45em;
-            padding: 15px;
-            border: 1px solid #333;
-            background: #212529;
-        }
-        #dropArea {
-            border: 2px dashed #bbb;
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-            padding: 50px;
-            text-align: center;
-            font-weight: bold;
-            color: #bbb;
-        }
-       
-    </style>
+  
+    
+  
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="https://github.com/CaffeineIssues/">
-                <img src="/assets/images/avatar.png" width="30" height="30" class="d-inline-block align-top avatar" alt="">
-                @CaffeineIssues
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Documentation</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                  </li>
-                </ul>
-            </div>
-          </nav>
-    </header>
-    <div class="container-fluid">
-        <h1>Image Processing Api</h1>
-        
-        <center>
-            <h6>Owner: <%= ownerId %></h6>
-            <p>If you just want to use this tool to process an image you can drag it and drop in the area bellow.</p>
-            <p>Otherwise, if you want to use this tool as an api, read the <a>documentation</a></p>
-            <form action="/upload/image" method="POST">            
-                <div class="drop-area">
-                    <div id="dropArea">
-                          <h2>Drop your image here</h2>
-                          <input type="file" id="image" name="image" onChange="handleUpload();"/>
-                          <input type="hidden" value="<%= ownerId %>" id="owner" name="owner">
-                    </div>
-                    
-                </div>
-            </form>
-        </center>
-        <div class="row justify-content-center" style="margin-top:2%">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            Original Image
-                        </div>
-                        <div class="card-body" style="min-height:320px;">
-                            <img id="originalImage" src="" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                            Processed Image
-                        </div>
-                        <div class="card-body"  style="min-height:320px;">
-                            <img id="processedImage" src="" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </center>
-        </div>
-        <H1 style="margin-top:2%;">Tools</H1>
-        <center>
-        <div class="row justify-content-center" style="margin-top:2%;margin-bottom:5%;">
-            <div class="col-sm-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Convert the image</h5>
-                  <p class="card-text">Converts the image to the desired format.</p>
-                  <a href="#" class="btn btn-primary">Use this tool</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Resize the image</h5>
-                  <p class="card-text">Resizes the image to the desired dimensions.</p>
-                  <a href="#" class="btn btn-primary">Use this tool</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">Generate a thumbnail</h5>
-                    <p class="card-text">Generates a thumbnail of your image.</p>
-                    <a href="#" class="btn btn-primary">Use this tool</a>
-                  </div>
-                </div>
-            </div>
-          </div>
-        
-    <footer >
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <center>
-                        <p><img src="/assets/images/coffee-cup.png" width="2%" height="2%">Wanna buy me a coffe? Support my <a href="">Patreon</a> </p>
-                    </center>
-                </div>
-            </div>
-        </div>
-    
-    </footer>
-        
+   
+    <%- include('partials/header') %>
+    <div id="content">
+       
+    </div>
+    <%- include('partials/footer') %>
 
 </body>
 <script>
-  
+     $.ajax({
+      url: '/home',
+      method: 'GET',
+      success: function(response) {
+        $('#content').html(response); // replace the #content element with the partial content
+      },
+      error: function(error) {
+        console.error('Error loading partial:', error);
+      }
+    });
+  $(document).ready(function() {
+  $('a[data-partial]').click(function(event) {
+    event.preventDefault();
+    var partial = $(this).data('partial'); 
+    var currentPage = '/' + partial;
+    // make an AJAX request to retrieve the partial content
+    $.ajax({
+      url: currentPage,
+      method: 'GET',
+      success: function(response) {
+        $('#content').html(response); // replace the #content element with the partial content
+      },
+      error: function(error) {
+        console.error('Error loading partial:', error);
+      }
+    });
+  });
+});
 </script>
+
 
 </html>

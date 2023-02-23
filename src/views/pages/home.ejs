@@ -1,0 +1,72 @@
+<div class="container-fluid">
+        <h1>Image Processing Api</h1>
+        
+        <center>
+            <h6>Owner: <%= ownerId %></h6>
+            <p>If you just want to use this tool to process an image you can drag it and drop in the area bellow.</p>
+            <p>Otherwise, if you want to use this tool as an api, read the <a>documentation</a></p>
+            <form action="/upload/image" method="POST">            
+                <div class="drop-area">
+                    <div id="dropArea">
+                          <h2>Drop your image here</h2>
+                          <input type="file" id="image" name="image" onChange="handleUpload();"/>
+                          <input type="hidden" value="<%= ownerId %>" id="owner" name="owner">
+                    </div>
+                    
+                </div>
+            </form>
+        </center>
+        <div class="row justify-content-center" style="margin-top:2%">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Original Image
+                        </div>
+                        <div class="card-body" style="min-height:320px;">
+                            <img id="originalImage" src="" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Processed Image
+                        </div>
+                        <div class="card-body"  style="min-height:320px;">
+                            <img id="processedImage" src="" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </center>
+        </div>
+        <H1 style="margin-top:2%;">Tools</H1>
+        <center>
+        <div class="row justify-content-center" style="margin-top:2%;margin-bottom:5%;">
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Convert the image</h5>
+                  <p class="card-text">Converts the image to the desired format.</p>
+                  <a href="#" class="btn btn-primary">Use this tool</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Resize the image</h5>
+                  <p class="card-text">Resizes the image to the desired dimensions.</p>
+                  <a href="#" class="btn btn-primary">Use this tool</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Generate a thumbnail</h5>
+                    <p class="card-text">Generates a thumbnail of your image.</p>
+                    <a href="#" class="btn btn-primary">Use this tool</a>
+                  </div>
+                </div>
+            </div>
+          </div>

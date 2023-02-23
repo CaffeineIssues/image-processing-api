@@ -53,14 +53,25 @@ app.use(
 app.use(upload.any())
 app.use(express.static(path.join(__dirname, 'public')))
 
+//ejs views
 app.set('view engine', 'ejs')
 
 app.set('views', 'src/views')
 app.use(express.json())
 app.get('/', logger, (req: Request, res: Response) => {
-    res.render('index', { ownerId: uuidv4() })
+    res.render('index')
+})
+app.get('/home', logger, (req: Request, res: Response) => {
+    res.render('pages/home', { ownerId: uuidv4() })
+})
+app.get('/documentation', logger, (req: Request, res: Response) => {
+    res.render('pages/documentation')
+})
+app.get('/about', logger, (req: Request, res: Response) => {
+    res.render('pages/about')
 })
 
+//routes
 app.use('/upload', logger, uploadRouter)
 app.use('/thumbs', logger, thumbsRouter)
 
