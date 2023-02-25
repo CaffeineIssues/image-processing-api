@@ -28,7 +28,7 @@
       url: '/home',
       method: 'POST',
       success: function(response) {
-        $('#content').html(response); // replace the #content element with the partial content
+        $('#content').html(response); 
       },
       error: function(error) {
         console.error('Error loading partial:', error);
@@ -39,12 +39,12 @@
     event.preventDefault();
     var partial = $(this).data('partial'); 
     var currentPage = '/' + partial;
-    // make an AJAX request to retrieve the partial content
+   
     $.ajax({
       url: currentPage,
       method: 'POST',
       success: function(response) {
-        $('#content').html(response); // replace the #content element with the partial content
+        $('#content').html(response); 
       },
       error: function(error) {
         console.error('Error loading partial:', error);
