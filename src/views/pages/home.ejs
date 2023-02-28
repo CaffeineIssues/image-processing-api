@@ -16,7 +16,16 @@
                 </div>
             </form>
         </center>
-        <div class="row justify-content-center" style="margin-top:2%">
+        <center>
+        <div style="display:flex;width:100%;margin-top:2%;margin-bottom:2%">
+            <div id="results" style="text-align:right;width:63%">
+               
+            </div>
+            <a href="" id="results-link"  target="_blank" style="text-align:left;margin-left:2px;width:50%;"></a>
+        </div>
+         
+        </center>
+        <div class="row justify-content-center">
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
@@ -42,13 +51,15 @@
                           <button type="button" class="btn btn-primary position-relative">
                            Crop
                           </button>
-                          <button type="button" class="btn btn-primary position-relative">
+                          <button type="button" class="btn btn-primary position-relative" onclick="handleThumb();">
                             Generate Thumbnail
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                               200x200
                             </span>
                           </button>
+                         
                         </div>
+                        
                         
                     </div>
                 </div>
