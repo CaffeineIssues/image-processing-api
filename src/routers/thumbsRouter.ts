@@ -14,15 +14,21 @@ router.get(
     async (req: Request, res: Response) => {
         try {
             const { owner, imageFolder, imageName } = req.params
+
             const extension = path.extname(
-                `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`
+                `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`.replace(
+                    'jpg',
+                    'jpeg'
+                )
             )
+
             const fileExists = fs.existsSync(
                 `${OWNER_PATH}/${owner}/${imageFolder}/${imageName}`.replace(
                     'original',
                     'thumb'
                 )
             )
+
             if (!extension) {
                 return res.status(500).json({
                     message: {

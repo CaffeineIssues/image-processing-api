@@ -25,29 +25,32 @@ const handleUpload = () => {
 const handleThumb = () => {
     const imageData = document.getElementById('image')
     const owner = document.getElementById('owner').value
-
     const extension = imageData.files[0].type.split('/')[1]
 
     const imageFolder = imageData.files[0].name.split(
         `.${extension === 'jpeg' ? 'jpg' : extension}`
     )[0]
-    fetch(`/thumbs/${owner}/${imageFolder}/${imageData.files[0].name}`, {
-        method: 'GET',
-    }).then((response) => {
-        console.log(response)
-        if (response.status === 200 || response.status === 210) {
-            response.json().then((data) => {
-                const url = data.message.url
-                const file = data.message.file
-                document.getElementById(
-                    'results'
-                ).innerText = `${file}, you can find it at:`
-                document.getElementById('results-link').innerText = 'here'
-                document.getElementById('results-link').href = url
-            })
-        }
-        if (response.status === 500) {
-            alert('Internal Server Error')
-        }
-    })
+    if (imageData.files[0] && owner) {
+        fetch(`/thumbs/${owner}/${imageFolder}/${imageData.files[0].name}`, {
+            method: 'GET',
+        }).then((response) => {
+            console.log(response)
+            if (response.status === 200 || response.status === 210) {
+                response.json().then((data) => {
+                    const url = data.message.url
+                    const file = data.message.file
+                    document.getElementById(
+                        'results'
+                    ).innerText = `${file}, you can find it at:`
+                    document.getElementById('results-link').innerText = 'here'
+                    document.getElementById('results-link').href = url
+                })
+            }
+            if (response.status === 500) {
+                alert('Internal Server Error')
+            }
+        })
+    } else {
+        alert('no image provided D: nothing to do here')
+    }
 }
